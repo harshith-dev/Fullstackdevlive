@@ -1,7 +1,19 @@
 .box{
-    height:100px;
-    width: 100px;
+
     background-color: brown;
     border:3px solid black;
     padding: 2px;
+}
+.block{
+    display: inline-block;
+    height: 100px;
+    width: 500px;
+}
+.inline{
+    display: inline;
+    height: 100px;
+}
+.inlineblock{
+    display:inline-block;
+    border: 3px solid gold;
 }
