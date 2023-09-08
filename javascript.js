@@ -76,18 +76,87 @@
 
 // const details = pet.getdetails.call(child,"brownie",12,30);
 // console.log(details);
+// difference between call and apply is that we pass values(individual) in call where as in apply we pass arrays
+//bind is just like call but the call function executes the function immediately but the bind makes a copy of the function and executes
+// 
+
+// const person = {
+//     firstName: "John",
+//     lastName: "Doe",
+//     fullName: function () {
+//         return this.firstName + " " + this.lastName;
+//     }
+// }
+// const member = {
+//     firstName: "Hege",
+//     lastName: "Nilsen",
+// }
+// let fullName = person.fullName.bind(member);
+// console.log(fullName())
+
+//async js
+
+//call back used in async js when a piece of code is depended on the async code
+
+// function askingquestion(callback){
+//     setTimeout(()=>{
+//         let watching_vids="coding vids";
+//         callback(watching_vids);
+//     },2000)
+// }
 
 
-const person = {
-    firstName: "John",
-    lastName: "Doe",
-    fullName: function () {
-        return this.firstName + " " + this.lastName;
-    }
+// function whatareyoudoing(reply){
+//     console.log(`i am watching ${reply}`);
+// }
+//  console.log("hey dude what are  you doing man")
+//  askingquestion(whatareyoudoing);//here we are passing the whatareyoudoing as a parameter the reply in the fn depends on the async function so it returns the values after completion
+
+
+//promise
+
+// function getOrderDetails(){
+//     return new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//         let data = 'chicken';
+//         if(data=='404')
+//         reject(data);
+//         else if(data!="404")
+//         resolve(data);},3000)
+//     })
+
+// }
+// function func1(order){
+   
+//     return new Promise((resolve)=>{
+//      order+=" biryani"
+//      resolve(order)
+//     })
+// }
+// function func3(order){
+//     console.log(`you have ordered the ${order}`)
+// }
+// function func2(error){
+//     console.log(`${error} Error : we are facing an error`);
+// }
+
+// let rest =getOrderDetails()
+// console.log(rest)
+
+
+//async and await
+
+function getOrderDetails(){
+    return new Promise(resolve=>{
+    setTimeout(()=>{
+        let data = 'chicken';
+        resolve(data);},3)
+    })
+
 }
-const member = {
-    firstName: "Hege",
-    lastName: "Nilsen",
-}
-let fullName = person.fullName.bind(member);
-console.log(fullName)
+
+async function start(){
+let rest = await getOrderDetails()
+console.log(rest)}
+
+start()
