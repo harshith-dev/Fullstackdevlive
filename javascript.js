@@ -146,17 +146,78 @@
 
 //async and await
 
-function getOrderDetails(){
-    return new Promise(resolve=>{
-    setTimeout(()=>{
-        let data = 'chicken';
-        resolve(data);},3)
+// function getOrderDetails(){
+//     return new Promise(resolve=>{
+//     setTimeout(()=>{
+//         let data = 'chicken';
+//         resolve(data);},3)
+//     })
+
+// }
+
+// async function start(){
+// let rest = await getOrderDetails()
+// console.log(rest)}
+
+// start()
+
+
+//promise chaining
+// let success= false;
+// let promise = new Promise((resolve,reject)=>{
+//     return setTimeout(() => {
+//         if(success){
+//             resolve("this is a success");
+//         }
+//         else{
+//             reject("this is a failure")
+//         }
+//     },1000);
+// })
+
+// async function func(){
+//     this.details = await promise
+//     return new Promise((resolve,reject)=>{
+//         resolve(this.details)
+//     })
+// }
+
+// async function func2(){
+//     try {this.data = await func();
+//     console.log(`this is in the try block${data}`);}
+//     catch(error){
+//         this.rejected = error
+//         console.log(this.rejected)
+//     }
+// }
+// func2();
+
+
+//another example
+let success = false ;
+
+let promise = new Promise((resolve,rej)=>{
+    resolve(success);
+})
+
+async function istrue(){
+    this.ist = await promise;
+    return new Promise((res,rej)=>{
+        if(this.ist){
+            res("it is a success");
+        }
+        else{
+            rej("it is not a success")
+        }
     })
-
 }
-
-async function start(){
-let rest = await getOrderDetails()
-console.log(rest)}
-
-start()
+async function message(){
+    try{
+        message=await istrue();
+        console.log(message)
+    }catch(error){
+        this.error=error;
+        console.log(error)
+    }
+} 
+message()
